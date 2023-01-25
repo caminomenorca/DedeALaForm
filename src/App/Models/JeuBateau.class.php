@@ -29,7 +29,7 @@ class JeuBateau extends JeuDeDes
 	 * @return bool
 	 */
 	public function getCapitain(): bool {
-		return $this->capitain;
+		return (bool)  $this->capitain;
 	}
 
 	/**
@@ -45,7 +45,7 @@ class JeuBateau extends JeuDeDes
 	 * @return bool
 	 */
 	public function getEquipage(): bool {
-		return $this->equipage;
+		return (bool) $this->equipage;
 	}
 
 	/**
@@ -61,7 +61,7 @@ class JeuBateau extends JeuDeDes
 	 * @return bool
 	 */
 	public function getBateau(): bool {
-		return $this->bateau;
+		return (bool)  $this->bateau;
 	}
 	
 	/**
@@ -89,34 +89,46 @@ class JeuBateau extends JeuDeDes
 		return $this;
 	}
 
-private function VerifierCapitaine(){
-	if(array_Search(6,$this->tableDeLances[$this->numLanceEnCours])){
-			$this->setCapitain(true);
-			$this->setnbDes($nbDes--);
+	private function estPresentDansLeTableau($valeur) {
+		return array_Search($valeur,$this->tableDeLances[count($this->tableDeLances)-1]);
 	}
-}
-private function VerifierBateau(){
-	if($this->getCapitain() & array_Search(4,$arrayLance)){
-			$this->setBateau(true);
-			$this->setnbDes($nbDes--);
-	}
-}
-private function VerifierEquipage(){
-	if($this->getBateau() & array_Search(3,$arrayLance)){
-			$this->setEquipage(true);
-			$this->setnbDes($nbDes--);
-	}
-}
 
-private function verifierEquipageComplet(){
-	if($this->getBateau() & $this->getCapitain() & $this->getEquipage()){
+	//Methodes
+	private function VerifierCapitaine(){
+		var_dump("je vérifie capitaine", $this->capitain);
+		if(!$this->capitain & $this->estPresentDansLeTableau(6)){
+			echo "je lai trouvé";
+				$this->setCapitain(true);
+				$this->nbDes--;
+		}
+	}
+	private function VerifierBateau(){
+		if($this->capitain & !$this->bateau  & $this->estPresentDansLeTableau(5)){
+				$this->setBateau(true);
+				$this->nbDes--;
+		}
+	}
+	private function VerifierEquipage(){
+		if($this->bateau & !$this->equipage  & $this->estPresentDansLeTableau(4)){
+				$this->setEquipage(true);
+				$this->nbDes--;
+		}
+	}
+
+	private function verifierEquipageComplet(){
+		if ($this->bateau& $this->capitain& $this->equipage) {
 			$this->setEquipageComplet(true);
 			echo "Vous avez votre équipage!";
+		}
+		
+		
 	}
-	
-	
-}
-private function jouerJeuBateau($nbDes,$nbLancerDes,$tableDeLances){
-	this->
+	public function traitementLancer(){
+		
+			$this->VerifierCapitaine();
+			$this->VerifierBateau();
+			$this->VerifierEquipage();
+			$this->verifierEquipageComplet();
 
-}}
+	}
+}

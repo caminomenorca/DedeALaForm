@@ -10,7 +10,7 @@ abstract class JeuDeDes extends Jeu
 
     protected int $nbLancerDes;
 
-    private array $tableDeLances;
+    protected array $tableDeLances;
 
     // Constructor
     public function __construct($nbDes, $nbLancerDes, $tableDeLances)
@@ -59,7 +59,7 @@ abstract class JeuDeDes extends Jeu
         array_push($this->tableDeLances, $arrayLance);
     }
     //Compteur de lancé de Dés
-    public function reduireLancerDe()
+    public function LancerDe()
     {
         while ($this->nbLancerDes > 0) {
             $this->jetDeDes();
