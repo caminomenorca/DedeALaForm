@@ -4,24 +4,26 @@ namespace App\Models;
 
 class JeuBateau extends JeuDeDes
 {
+
+	CONST NB_DES_BATEAU = 5;
+	CONST NB_LANCER_BATEAU = 3;
+
+	CONST VALEUR_DE_CAPITAINE = 6;
+	CONST VALEUR_DE_BATEAU = 5;
+	CONST VALEUR_DE_EQUIPAGE = 4;
+	
     // Attribut 
     private bool $capitain;
     private bool $equipage;
     private bool $bateau;
     private bool $equipageComplet;
     // Constructor
-    public function __construct(
-        $capitain,
-        $equipage,
-        $bateau,
-        $equipageComplet
-
-    ) {
-        $this->capitain = $capitain;
-        $this->equipage = $equipage;
-        $this->bateau = $bateau;
-        $this->equipageComplet = $equipageComplet;
-        parent::__construct(5, 3, array());
+    public function __construct() {
+        $this->capitain = false;
+        $this->equipage = false;
+        $this->bateau = false;
+        $this->equipageComplet = false ;
+        parent::__construct(NB_DES_BATEAU, NB_LANCER_BATEAU);
     }
 
     // Accesseur  
@@ -116,7 +118,10 @@ private function verifierEquipageComplet(){
 	
 	
 }
-private function jouerJeuBateau($nbDes,$nbLancerDes,$tableDeLances){
-	this->
 
-}}
+public function traitementLancer() {
+    $this->nbDes--;
+	echo "gestion de l'équipage";
+}
+
+}

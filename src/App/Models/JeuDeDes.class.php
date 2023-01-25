@@ -17,7 +17,7 @@ abstract class JeuDeDes extends Jeu
     {
         $this->nbDes = $nbDes;
         $this->nbLancerDes = $nbLancerDes;
-        $this->tableDeLances = $tableDeLances;
+        $this->tableDeLances = array();
     }
     // Accesseur      
 
@@ -45,7 +45,7 @@ abstract class JeuDeDes extends Jeu
     // Methodes
     // on fait un lancé de dés (selon le nombre de dés en jeu)
 
-    public function jetDeDes()
+    public function lancerDes()
     {
 
         $iteratorDe = 0;
@@ -59,12 +59,15 @@ abstract class JeuDeDes extends Jeu
         array_push($this->tableDeLances, $arrayLance);
     }
     //Compteur de lancé de Dés
-    public function reduireLancerDe()
+    public function jouerTour()
     {
         while ($this->nbLancerDes > 0) {
-            $this->jetDeDes();
+            $this->lancerDes();
             $this->traitementLancer();
             $this->nbLancerDes--;
         }
     }
+
+
+ 
 }
