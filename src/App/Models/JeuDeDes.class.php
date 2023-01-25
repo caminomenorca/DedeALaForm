@@ -41,7 +41,7 @@ abstract class JeuDeDes extends Jeu
         return $this;
     }
 
-
+    abstract protected function traitementLancer(); 
     // Methodes
     // on fait un lancé de dés (selon le nombre de dés en jeu)
 
@@ -55,13 +55,15 @@ abstract class JeuDeDes extends Jeu
 
             $iteratorDe++;
         } while ($iteratorDe < $this->nbDes);
+       
         array_push($this->tableDeLances, $arrayLance);
     }
     //Compteur de lancé de Dés
-    public function lancerDe()
+    public function reduireLancerDe()
     {
         while ($this->nbLancerDes > 0) {
             $this->jetDeDes();
+            $this->traitementLancer();
             $this->nbLancerDes--;
         }
     }
