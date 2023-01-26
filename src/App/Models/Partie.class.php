@@ -7,9 +7,11 @@ use DateTime;
 class Partie
 {
     // Attribut 
-    private DateTime $dateHeure;
+    public DateTime $dateHeure;
     private int $score;
     private bool $gagnant;
+    public Joueur $Joueur;
+    public JeuBateau $JeuBateau;
     // Constructor 
     public function __construct($dateHeure, $score, $gagnant)
     {

@@ -55,7 +55,6 @@ abstract class JeuDeDes extends Jeu
 
             $iteratorDe++;
         } while ($iteratorDe < $this->nbDes);
-       
         array_push($this->tableDeLances, $arrayLance);
     }
     //Compteur de lancé de Dés

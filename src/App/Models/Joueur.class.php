@@ -12,6 +12,7 @@ class Joueur extends Utilisateur
   private string $mdp;
   private string $droit;
   private array $listePartie;
+  public Partie $Partie;
 
   // Constructor
   public function __construct($idUser, $login, $mdp, $droit, $listePartie = array())
@@ -118,8 +119,7 @@ class Joueur extends Utilisateur
   public function lancerPartie()
   {
     $partie = new Partie(new DateTime(), 0, false);
-    echo "<pre> la partie";
-    var_dump($partie);
+    echo "<pre> la partie <br> ";
     $this->listePartie[] = $partie;
   }
 }
